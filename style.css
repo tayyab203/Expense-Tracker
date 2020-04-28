@@ -87,6 +87,7 @@ input[type='text'],input[type='number'] {
 }
 
 .btn {
+    cursor: pointer;
     background-color: #9c88ff;
     box-shadow: var(--box-shadow);
     color: #fff;
@@ -96,6 +97,10 @@ input[type='text'],input[type='number'] {
     margin: 10px 0 30px;
     padding: 10px;
     width: 100%;
+}
+
+.btn:focus,.delete-btn:focus {
+    outline: 0;
 }
 
 .list {
@@ -124,6 +129,7 @@ input[type='text'],input[type='number'] {
 }
 
 .delete-btn {
+    cursor: pointer;
     background-color: #e74c3c;
     border: 0;
     color: #fff;
@@ -135,4 +141,9 @@ input[type='text'],input[type='number'] {
     left: 0;
     transform: translate(-100%, -50%);
     opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.list li:hover .delete-btn {
+    opacity: 1;
 }
