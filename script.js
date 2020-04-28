@@ -83,3 +83,40 @@ function updateValues() {
     .filter(item => item > 0)
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
+
+    
+  const expense = (
+    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1
+  ).toFixed(2);
+
+  balance.innerText = `$${total}`;
+  money_plus.innerText = `$${income}`;
+  money_minus.innerText = `$${expense}`;
+}
+
+// Remove transaction by ID
+function removeTransaction(id) {
+  transactions = transactions.filter(transaction => transaction.id !== id);
+
+  updateLocalStorage();
+
+  init();
+}
+
+// Update local storage transactions
+function updateLocalStorage() {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+// Init app
+function init() {
+  list.innerHTML = '';
+
+  transactions.forEach(addTransactionDOM);
+  updateValues();
+}
+
+init();
+
+form.addEventListener('submit', addTransaction);
